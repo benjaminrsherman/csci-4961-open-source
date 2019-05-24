@@ -8,27 +8,27 @@
 
 # Linux
 ## `tree` output
-![tree output](../images/lab01-tree.png)
+![tree output](../../images/lab01-tree.png)
 Note: Since each of these directories contain many files, I only listed directories.
 
 # Regex
 ## RegexOne Problems
-![Exercise 1](../images/lab01-regexone-q1.png)
-![Exercise 2](../images/lab01-regexone-q2.png)
-![Exercise 3](../images/lab01-regexone-q3.png)
-![Exercise 4](../images/lab01-regexone-q4.png)
-![Exercise 5](../images/lab01-regexone-q5.png)
-![Exercise 6](../images/lab01-regexone-q6.png)
-![Exercise 7](../images/lab01-regexone-q7.png)
+![Exercise 1](../../images/lab01-regexone-q1.png)
+![Exercise 2](../../images/lab01-regexone-q2.png)
+![Exercise 3](../../images/lab01-regexone-q3.png)
+![Exercise 4](../../images/lab01-regexone-q4.png)
+![Exercise 5](../../images/lab01-regexone-q5.png)
+![Exercise 6](../../images/lab01-regexone-q6.png)
+![Exercise 7](../../images/lab01-regexone-q7.png)
 
 ## Regex Crossword Puzzles
-![Puzzle 1](../images/lab01-regexcrossword-1.png)
-![Puzzle 2](../images/lab01-regexcrossword-2.png)
-![Puzzle 3](../images/lab01-regexcrossword-3.png)
-![Puzzle 4](../images/lab01-regexcrossword-4.png)
+![Puzzle 1](../../images/lab01-regexcrossword-1.png)
+![Puzzle 2](../../images/lab01-regexcrossword-2.png)
+![Puzzle 3](../../images/lab01-regexcrossword-3.png)
+![Puzzle 4](../../images/lab01-regexcrossword-4.png)
 
 # Play with Blockly
-![Blocky solution](../images/lab01-blocky.png)
+![Blocky solution](../../images/lab01-blocky.png)
 
 # Reflection
 	At RPI, one of the biggest problems I've come up against is the difficulty in planning courses multiple semesters in advance.  I've had to deal with this a lot since I'm trying to graduate in three years, so it's important that I am able to meet all graduation requirements.  The issue is that there is no easy way to view all the requirements for a course (i.e. when a course is offered, which courses are prerequisites, and these same constraints on those courses).  Inspired by [YACS](http://yacs.io/), I want to make a website which can be used to plan course schedules over multiple semesters.  Ideally, it would show which courses are prerequites and automatically add those to your schedule, as well as restricting courses to when they are offered.  This project could potentially also track progress towards graduation, however I would have to look into how complex such a system would have to be.
