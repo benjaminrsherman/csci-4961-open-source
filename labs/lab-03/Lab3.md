@@ -24,6 +24,7 @@ $$\begin{bmatrix}
 ![hadamard.png](hadamard.png)
 
 ## Community
+Github Results:
 1. Number of contributors: 2
 2. Number of lines of code: 14,225
 3. First commit: 2019-3-12 (37c204611bb1029aad391aa4ada00649cffb1884)
@@ -31,3 +32,9 @@ $$\begin{bmatrix}
 5. Current branches:
 	- master
 	- Demo
+
+GitStats Results:
+1. Number of authors: 4
+2. Number of lines of code: 11,314
+3. Commit information not provided
+4. Branch information not provided
