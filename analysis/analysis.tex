@@ -1,0 +1,108 @@
+\documentclass[11pt]{article}
+\usepackage{relsize}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\usepackage{tabularx}
+\pagenumbering{gobble}
+
+\title{\vspace{-2.0cm}\bf Analysis of an Open Source Project}
+\author{Benjamin Sherman}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Ranking of Three Open Source Projects}
+\subsection{YACS}
+\nopagebreak
+Website: \url{https://yacs.io}
+\nopagebreak
+\begin{center}
+\begin{tabularx}{\textwidth}{|l|c|X|}
+	\hline
+	\textbf{Evaluation Factor} & \textbf{Level (0-2)} & \textbf{Evaluation Data} \\\hline
+	Licensing & 2 & YACS uses the \textit{GNU Affero General Public License}, which is OSI approved.\\\hline
+	Language & 1 & YACS mostly uses Ruby, which I don't really know, however there are some components which are written in Rust, which I enjoy using.\\\hline
+	Level of Activity & 2 & YACS has frequent updates.\\\hline
+	Number of Contributors & 2 & YACS has many contributors.\\\hline
+	Product Size & 2 & There is a decently sized code base.\\\hline
+	Issue Tracker & 2 & The issue tracker is being frequently used.\\\hline
+	New Contributors & 2 & There is a start up guide on the site homepage.\\\hline
+	Community Norms & 2 & There is a Code of Conduct which is followed.\\\hline
+	User Base & 2 & It's YACS... There's a devoted user base.\\\hline
+	Total Score & 17 & \\\hline
+\end{tabularx}
+\end{center}
+
+%\newpage
+\subsection{GIMP}
+\nopagebreak
+Website: \url{https://www.gimp.org/}
+\nopagebreak
+\begin{center}
+\begin{tabularx}{\textwidth}{|l|c|X|}
+	\hline
+	\textbf{Evaluation Factor} & \textbf{Level (0-2)} & \textbf{Evaluation Data} \\\hline
+	Licensing & 2 & GIMP uses \textit{GNU GPLv3}, which is an OSI approved license.\\\hline
+	Language & 2 & GIMP is written in C, which is a language I enjoy.\\\hline
+	Level of Activity & 2 & GIMP has frequent code updates and releases.\\\hline
+	Number of Contributors & 2 & GIMP has nearly 100 contributors.\\\hline
+	Product Size & 1 & The GIMP code base is very complex.\\\hline
+	Issue Tracker & 2 & The GIMP issue tracker is widely used.\\\hline
+	New Contributors & 2 & There are multiple files and a wiki dedicated to helping developers, and many of these resources cater to new developers.\\\hline
+	Community Norms & 1 & GIMP mailing lists have a code of conduct, but it is unclear whether or not those rules apply beyond the mailing lists.  Regardless, the community is respectful.\\\hline
+	User Base & 2 & It was estimated that in 2014 there were 100,000 downloads of GIMP by Ubuntu derivatives alone.\footnote{\url{https://www.gimpusers.com/forums/gimp-user/16238-how-manu-gimp-user-are-there}}\\\hline
+	Total Score & 16 & \\\hline
+\end{tabularx}
+\end{center}
+
+\subsection{The Linux Kernel}
+\nopagebreak
+Website: \url{https://www.kernel.org/}
+\nopagebreak
+\begin{center}
+\begin{tabularx}{\textwidth}{|l|c|X|}
+	\hline
+	\textbf{Evaluation Factor} & \textbf{Level (0-2)} & \textbf{Evaluation Data} \\\hline
+	Licensing & 2 & The Linux Kernel is licensed under \textit{GNU GPLv2}, which is OSI approved.\\\hline
+	Language & 2 & The Linux Kernel uses mostly C which is a language I enjoy.\\\hline
+	Level of Activity & 2 & As of 2017, there were 8.5 changes to the kernel every hour\footnote{\url{https://www.linuxfoundation.org/publications/2017/10/2017-state-of-linux-kernel-development/}}, however that rate has increased since.\\\hline
+	Number of Contributors & 2 & As of 2017, there were over 1,600 kernel developers with over 15,637 total developers since 2005.\footnote{\url{https://www.linuxfoundation.org/publications/2017/10/2017-state-of-linux-kernel-development/}}\\\hline
+	Product Size & 2 & The Linux kernel's code base is very large, however this does not cause much of an issue.  See \ref{subsec:kernel_codebase} for more information.\\\hline
+	Issue Tracker & 2 & The Linux kernel uses mailing lists to organize development and issue tracking, and they are \textit{very} active.\\\hline
+	New Contributors & 2 & While a high level of knowledge is needed to contribute to the kernel's core, it is surprisingly easy to submit small fixes and there are many resources dedicating to helping newcomers learn about kernel development.\\\hline
+	Community Norms & 2 & Overall, the kernel community is very respectful.  See \ref{subsec:kernel_community} for more information.\\\hline
+	User Base & 2 & The Linux kernel has many users.  See \ref{subsec:kernel_users} for more information.\\\hline
+	Total Score & 17 & \\\hline
+\end{tabularx}
+\end{center}
+
+\section{In-Depth Analysis: The Linux Kernel}
+\subsection{Licensing}
+\label{subsec:kernel_license}
+
+\subsection{Language}
+\label{subsec:kernel_language}
+
+\subsection{Level of Activity}
+\label{subsec:kernel_activity}
+
+\subsection{Number of Contributors}
+\label{subsec:kernel_contributors}
+
+\subsection{Product Size}
+\label{subsec:kernel_codebase}
+
+\subsection{Issue Tracker}
+\label{subsec:kernel_issue_tracker}
+
+\subsection{New Contributors}
+\label{subsec:kernel_newbies}
+
+\subsection{Community Norms}
+\label{subsec:kernel_community}
+
+\subsection{User Base}
+\label{subsec:kernel_users}
+
+\end{document}
