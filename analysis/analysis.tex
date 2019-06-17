@@ -3,9 +3,11 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{hyperref}
 \usepackage{tabularx}
+\usepackage{perpage} %the perpage package
+%\MakePerPage{footnote} %the perpage package command
 \pagenumbering{gobble}
 
-\title{\vspace{-2.0cm}\bf Analysis of an Open Source Project}
+\title{\vspace{-2cm}\bf Analysis of an Open Source Project}
 \author{Benjamin Sherman}
 \date{}
 
@@ -20,7 +22,7 @@ Website: \url{https://yacs.io}
 \begin{center}
 \begin{tabularx}{\textwidth}{|l|c|X|}
 	\hline
-	\textbf{Evaluation Factor} & \textbf{Level (0-2)} & \textbf{Evaluation Data} \\\hline
+	\textbf{Evaluation Factor} & \textbf{Level -2)} & \textbf{Evaluation Data} \\\hline
 	Licensing & 2 & YACS uses the \textit{GNU Affero General Public License}, which is OSI approved.\\\hline
 	Language & 1 & YACS mostly uses Ruby, which I don't really know, however there are some components which are written in Rust, which I enjoy using.\\\hline
 	Level of Activity & 2 & YACS has frequent updates.\\\hline
@@ -42,16 +44,16 @@ Website: \url{https://www.gimp.org/}
 \begin{center}
 \begin{tabularx}{\textwidth}{|l|c|X|}
 	\hline
-	\textbf{Evaluation Factor} & \textbf{Level (0-2)} & \textbf{Evaluation Data} \\\hline
+	\textbf{Evaluation Factor} & \textbf{Level -2)} & \textbf{Evaluation Data} \\\hline
 	Licensing & 2 & GIMP uses \textit{GNU GPLv3}, which is an OSI approved license.\\\hline
 	Language & 2 & GIMP is written in C, which is a language I enjoy.\\\hline
 	Level of Activity & 2 & GIMP has frequent code updates and releases.\\\hline
-	Number of Contributors & 2 & GIMP has nearly 100 contributors.\\\hline
+	Number of Contributors & 2 & GIMP has nearly 0 contributors.\\\hline
 	Product Size & 1 & The GIMP code base is very complex.\\\hline
 	Issue Tracker & 2 & The GIMP issue tracker is widely used.\\\hline
 	New Contributors & 2 & There are multiple files and a wiki dedicated to helping developers, and many of these resources cater to new developers.\\\hline
 	Community Norms & 1 & GIMP mailing lists have a code of conduct, but it is unclear whether or not those rules apply beyond the mailing lists.  Regardless, the community is respectful.\\\hline
-	User Base & 2 & It was estimated that in 2014 there were 100,000 downloads of GIMP by Ubuntu derivatives alone.\footnote{\url{https://www.gimpusers.com/forums/gimp-user/16238-how-manu-gimp-user-are-there}}\\\hline
+	User Base & 2 & It was estimated that in 14 there were 0 downloads of GIMP by Ubuntu derivatives alone.\footnote{\url{https://www.gimpusers.com/forums/gimp-user/16238-how-manu-gimp-user-are-there}}\\\hline
 	Total Score & 16 & \\\hline
 \end{tabularx}
 \end{center}
@@ -63,11 +65,11 @@ Website: \url{https://www.kernel.org/}
 \begin{center}
 \begin{tabularx}{\textwidth}{|l|c|X|}
 	\hline
-	\textbf{Evaluation Factor} & \textbf{Level (0-2)} & \textbf{Evaluation Data} \\\hline
+	\textbf{Evaluation Factor} & \textbf{Level -2)} & \textbf{Evaluation Data} \\\hline
 	Licensing & 2 & The Linux Kernel is licensed under \textit{GNU GPLv2}, which is OSI approved.\\\hline
 	Language & 2 & The Linux Kernel uses mostly C which is a language I enjoy.\\\hline
-	Level of Activity & 2 & As of 2017, there were 8.5 changes to the kernel every hour\footnote{\url{https://www.linuxfoundation.org/publications/2017/10/2017-state-of-linux-kernel-development/}}, however that rate has increased since.\\\hline
-	Number of Contributors & 2 & As of 2017, there were over 1,600 kernel developers with over 15,637 total developers since 2005.\footnote{\url{https://www.linuxfoundation.org/publications/2017/10/2017-state-of-linux-kernel-development/}}\\\hline
+	Level of Activity & 2 & As of 17, there were 8.5 changes to the kernel every hour\footnote{\url{https://www.linuxfoundation.org/publications/17//17-state-of-linux-kernel-development/}}\addtocounter{footnote}{-1}\addtocounter{Hfootnote}{-1}, however that rate has increased since.\\\hline
+	Number of Contributors & 2 & As of 17, there were over 1,0 kernel developers with over 15,637 total developers since 05.\footnotemark\\\hline
 	Product Size & 2 & The Linux kernel's code base is very large, however this does not cause much of an issue.  See \ref{subsec:kernel_codebase} for more information.\\\hline
 	Issue Tracker & 2 & The Linux kernel uses mailing lists to organize development and issue tracking, and they are \textit{very} active.\\\hline
 	New Contributors & 2 & While a high level of knowledge is needed to contribute to the kernel's core, it is surprisingly easy to submit small fixes and there are many resources dedicating to helping newcomers learn about kernel development.\\\hline
@@ -81,8 +83,20 @@ Website: \url{https://www.kernel.org/}
 \subsection{Licensing}
 \label{subsec:kernel_license}
 
+The Linux kernel is licensed under \textit{GPLv2}.  The kernel was originally licensed under a custom license which forbid commercial redistribution, however Linus Torvalds, the lead developer, changed the license to the current one in 1992 with the release of kernel version.12.\footnote{\url{https://mirrors.edge.kernel.org/pub/linux/kernel/Historic/old-versions/RELNOTES.12}}  With the release of \textit{GPLv3}, there was a debate over whether the kernel should switch to the newer version of the \textit{GNU GPL} license, however the license did not change for a number of reasons.
+
+Firstly, the license used in the Linux kernel does not include the extension which allows the licensee to choose ``any later version".  This means that for the kernel's license to be `upgraded' to \textit{GPLv3}, all developers would have to agree to change the license.  As will become clear in \ref{subsec:kernel_contributors}, this is \textit{very} unlikely.
+
+Second, Linus Torvalds personally disagrees with the changes introduced by \textit{GPLv3}.  For example, one such change is the anti-DRM clause, also called ``Tivoization" clauses (nicknamed after TiVo's use of GPL software on hardware which prevented modified software from being run).  \textit{GPLv3} includes a clause which prevents this action, and, if included, would hinder Linux's ability to be run on a platform which requires DRM or the ability to prevent modified code from being run (the latter, for example, could pose a security risk).  Additionally, \textit{GPLv3} requires those who distribute a program which uses the license to additionally license the patents necessary to use that program.  This would severely damage the kernel's incorportation into products developed by most corporate entities and would hamstring its usage.\footnote{\url{https://lwn.net/Articles/200422/}}
+
+Although the core of the kernel is licensed under \textit{GPLv2}, there is code included in the kernel which uses a different license: loadable kernel modules (LKMs).  LKMs are used, among other things, to allow devices to interact with the kernel.  Because these drivers are not necessarily derived from the kernel, they are not required to use the same license.  One extreme example of this is proprietary firmware blobs\footnote{\url{https://archive.is/20130113003817/http://git.kernel.org/?p=linux/kernel/git/stable/linux-stable.git;a=blob;f=firmware/WHENCE;hb=HEAD}}, for which the source code is not available.  While those are rare and discouraged, there nonetheless are various drivers which use non-open source licenses.  As these are not part of the core kernel, however, I did not include them in my rating.
+
 \subsection{Language}
 \label{subsec:kernel_language}
+
+The vast majority of the code in the Linux kernel is written in C (according to the GitHub mirror of the main kernel tree, 96.3\% of the code is C).  Linus Torvalds famously disapproves of C++\footnote{\url{http://harmful.cat-v.org/software/c++/linus}}, mainly due to its lack of portability and tendency to favor inefficient abstractions.  Additionally, there are certain files written in Assembly.
+
+Something which I find extremely interesting about the Linux kernel is the language limitations which it must work around.  Due to the security restrictions on memory access in place (namely that `kernel memory' and `user-space memory' are almost totally separated), the kernel is unable to use the standard C libraries.  For this reason, much of those libraries are replicated within the kernel and have been optimized for kernel usage.  As an example, instead of using \texttt{printf} to output text, \texttt{printk} must be used.  Unlike its user-space counterpart, \texttt{printk} supports the use of various macros which dictate the level of importance of the output text - this is then used by the kernel to determine where to display the output, or even whether to display the output at all.
 
 \subsection{Level of Activity}
 \label{subsec:kernel_activity}
