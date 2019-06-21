@@ -1,13 +1,12 @@
 \documentclass[11pt]{article}
 \usepackage{relsize}
 \usepackage[margin=1in]{geometry}
-\usepackage{hyperref}
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
 \usepackage{tabularx}
-\usepackage{perpage} %the perpage package
-%\MakePerPage{footnote} %the perpage package command
+\usepackage{perpage}
 \pagenumbering{gobble}
 
-\title{\vspace{-2cm}\bf Analysis of an Open Source Project}
+\title{\vspace{-3em}\bf Analysis of an Open Source Project}
 \author{Benjamin Sherman}
 \date{}
 
@@ -22,7 +21,7 @@ Website: \url{https://yacs.io}
 \begin{center}
 \begin{tabularx}{\textwidth}{|l|c|X|}
 	\hline
-	\textbf{Evaluation Factor} & \textbf{Level -2)} & \textbf{Evaluation Data} \\\hline
+	\textbf{Evaluation Factor} & \textbf{Level (0-2)} & \textbf{Evaluation Data} \\\hline
 	Licensing & 2 & YACS uses the \textit{GNU Affero General Public License}, which is OSI approved.\\\hline
 	Language & 1 & YACS mostly uses Ruby, which I don't really know, however there are some components which are written in Rust, which I enjoy using.\\\hline
 	Level of Activity & 2 & YACS has frequent updates.\\\hline
@@ -36,7 +35,6 @@ Website: \url{https://yacs.io}
 \end{tabularx}
 \end{center}
 
-%\newpage
 \subsection{GIMP}
 \nopagebreak
 Website: \url{https://www.gimp.org/}
@@ -44,7 +42,7 @@ Website: \url{https://www.gimp.org/}
 \begin{center}
 \begin{tabularx}{\textwidth}{|l|c|X|}
 	\hline
-	\textbf{Evaluation Factor} & \textbf{Level -2)} & \textbf{Evaluation Data} \\\hline
+	\textbf{Evaluation Factor} & \textbf{Level (0-2)} & \textbf{Evaluation Data} \\\hline
 	Licensing & 2 & GIMP uses \textit{GNU GPLv3}, which is an OSI approved license.\\\hline
 	Language & 2 & GIMP is written in C, which is a language I enjoy.\\\hline
 	Level of Activity & 2 & GIMP has frequent code updates and releases.\\\hline
@@ -65,58 +63,94 @@ Website: \url{https://www.kernel.org/}
 \begin{center}
 \begin{tabularx}{\textwidth}{|l|c|X|}
 	\hline
-	\textbf{Evaluation Factor} & \textbf{Level -2)} & \textbf{Evaluation Data} \\\hline
+	\textbf{Evaluation Factor} & \textbf{Level (0-2)} & \textbf{Evaluation Data} \\\hline
 	Licensing & 2 & The Linux Kernel is licensed under \textit{GNU GPLv2}, which is OSI approved.\\\hline
 	Language & 2 & The Linux Kernel uses mostly C which is a language I enjoy.\\\hline
-	Level of Activity & 2 & As of 17, there were 8.5 changes to the kernel every hour\footnote{\url{https://www.linuxfoundation.org/publications/17//17-state-of-linux-kernel-development/}}\addtocounter{footnote}{-1}\addtocounter{Hfootnote}{-1}, however that rate has increased since.\\\hline
+	Level of Activity & 2 & As of 17, there were 8.5 changes to the kernel every hour\footnote{\url{https://www.linuxfoundation.org/publications/2017/10/2017-state-of-linux-kernel-development/}}\addtocounter{footnote}{-1}\addtocounter{Hfootnote}{-1}, however that rate has increased since.\\\hline
 	Number of Contributors & 2 & As of 17, there were over 1,0 kernel developers with over 15,637 total developers since 05.\footnotemark\\\hline
 	Product Size & 2 & The Linux kernel's code base is very large, however this does not cause much of an issue.  See \ref{subsec:kernel_codebase} for more information.\\\hline
 	Issue Tracker & 2 & The Linux kernel uses mailing lists to organize development and issue tracking, and they are \textit{very} active.\\\hline
 	New Contributors & 2 & While a high level of knowledge is needed to contribute to the kernel's core, it is surprisingly easy to submit small fixes and there are many resources dedicating to helping newcomers learn about kernel development.\\\hline
-	Community Norms & 2 & Overall, the kernel community is very respectful.  See \ref{subsec:kernel_community} for more information.\\\hline
+	Community Norms & 2 & Overall, the kernel community is respectful.  See \ref{subsec:kernel_community} for more information.\\\hline
 	User Base & 2 & The Linux kernel has many users.  See \ref{subsec:kernel_users} for more information.\\\hline
 	Total Score & 17 & \\\hline
 \end{tabularx}
 \end{center}
 
+\newpage
 \section{In-Depth Analysis: The Linux Kernel}
+\textit{Note: the order of these sections does not follow the ordering in the above table}
 \subsection{Licensing}
 \label{subsec:kernel_license}
 
-The Linux kernel is licensed under \textit{GPLv2}.  The kernel was originally licensed under a custom license which forbid commercial redistribution, however Linus Torvalds, the lead developer, changed the license to the current one in 1992 with the release of kernel version.12.\footnote{\url{https://mirrors.edge.kernel.org/pub/linux/kernel/Historic/old-versions/RELNOTES.12}}  With the release of \textit{GPLv3}, there was a debate over whether the kernel should switch to the newer version of the \textit{GNU GPL} license, however the license did not change for a number of reasons.
+The Linux kernel is licensed under \textit{GPLv2}.  The kernel was originally licensed under a custom license which forbid commercial redistribution, however Linus Torvalds, the lead developer, changed the license to the current one in 1992 with the release of kernel version 0.12.\footnote{\url{https://mirrors.edge.kernel.org/pub/linux/kernel/Historic/old-versions/RELNOTES-0.12}}  With the release of \textit{GPLv3}, there was a debate over whether the kernel should switch to the newer version of the \textit{GNU GPL} license, however the license did not change for a number of reasons.
 
 Firstly, the license used in the Linux kernel does not include the extension which allows the licensee to choose ``any later version".  This means that for the kernel's license to be `upgraded' to \textit{GPLv3}, all developers would have to agree to change the license.  As will become clear in \ref{subsec:kernel_contributors}, this is \textit{very} unlikely.
 
 Second, Linus Torvalds personally disagrees with the changes introduced by \textit{GPLv3}.  For example, one such change is the anti-DRM clause, also called ``Tivoization" clauses (nicknamed after TiVo's use of GPL software on hardware which prevented modified software from being run).  \textit{GPLv3} includes a clause which prevents this action, and, if included, would hinder Linux's ability to be run on a platform which requires DRM or the ability to prevent modified code from being run (the latter, for example, could pose a security risk).  Additionally, \textit{GPLv3} requires those who distribute a program which uses the license to additionally license the patents necessary to use that program.  This would severely damage the kernel's incorportation into products developed by most corporate entities and would hamstring its usage.\footnote{\url{https://lwn.net/Articles/200422/}}
 
-Although the core of the kernel is licensed under \textit{GPLv2}, there is code included in the kernel which uses a different license: loadable kernel modules (LKMs).  LKMs are used, among other things, to allow devices to interact with the kernel.  Because these drivers are not necessarily derived from the kernel, they are not required to use the same license.  One extreme example of this is proprietary firmware blobs\footnote{\url{https://archive.is/20130113003817/http://git.kernel.org/?p=linux/kernel/git/stable/linux-stable.git;a=blob;f=firmware/WHENCE;hb=HEAD}}, for which the source code is not available.  While those are rare and discouraged, there nonetheless are various drivers which use non-open source licenses.  As these are not part of the core kernel, however, I did not include them in my rating.
+Although the core of the kernel is licensed under \textit{GPLv2}, there is code included in the kernel which uses a different license: loadable kernel modules (LKMs).  LKMs are used, among other things, to allow hardware devices to interact with the kernel.  Because these drivers are not necessarily derived from the kernel, they are not required to use the same license.  One extreme example of this is proprietary firmware blobs\footnote{\url{https://archive.is/20130113003817/http://git.kernel.org/?p=linux/kernel/git/stable/linux-stable.git;a=blob;f=firmware/WHENCE;hb=HEAD}}, for which the source code is not available.  While those are rare and discouraged, there nonetheless are various drivers which use non-open source licenses.  As these are not part of the core kernel and are not required for it to function, however, I did not include them in my rating.
 
 \subsection{Language}
 \label{subsec:kernel_language}
 
-The vast majority of the code in the Linux kernel is written in C (according to the GitHub mirror of the main kernel tree, 96.3\% of the code is C).  Linus Torvalds famously disapproves of C++\footnote{\url{http://harmful.cat-v.org/software/c++/linus}}, mainly due to its lack of portability and tendency to favor inefficient abstractions.  Additionally, there are certain files written in Assembly.
+The vast majority of the code in the Linux kernel is written in C (according to \texttt{cloc}\footnote{\url{https://github.com/AlDanial/cloc}}, 87.9\% of the files in the kernel are either a \texttt{.c} or a \texttt{.h} file).  Linus Torvalds famously disapproves of C++\footnote{\url{http://harmful.cat-v.org/software/c++/linus}}, mainly due to its lack of portability and tendency to favor inefficient abstractions.  Additionally, there are a bit over 1,000 files written in Assembly.
 
-Something which I find extremely interesting about the Linux kernel is the language limitations which it must work around.  Due to the security restrictions on memory access in place (namely that `kernel memory' and `user-space memory' are almost totally separated), the kernel is unable to use the standard C libraries.  For this reason, much of those libraries are replicated within the kernel and have been optimized for kernel usage.  As an example, instead of using \texttt{printf} to output text, \texttt{printk} must be used.  Unlike its user-space counterpart, \texttt{printk} supports the use of various macros which dictate the level of importance of the output text - this is then used by the kernel to determine where to display the output, or even whether to display the output at all.
+Something which I find extremely interesting about the Linux kernel is the language limitations which it must work around.  Due to security restrictions on memory access (namely that `kernel memory' and `user-space memory' are almost totally separated), the kernel is unable to use the standard C libraries.  For this reason, much of those libraries are replicated within the kernel and have been optimized for kernel usage.  As an example, instead of using \texttt{printf} to output text, \texttt{printk} must be used.
 
-\subsection{Level of Activity}
-\label{subsec:kernel_activity}
-
-\subsection{Number of Contributors}
-\label{subsec:kernel_contributors}
-
-\subsection{Product Size}
-\label{subsec:kernel_codebase}
-
-\subsection{Issue Tracker}
-\label{subsec:kernel_issue_tracker}
-
-\subsection{New Contributors}
-\label{subsec:kernel_newbies}
+Despite what one might think, this ``limitation" is actually an advantage.  Unlike its user-space counterpart, \texttt{printk} supports the use of various macros which dictate the level of importance of the output text - this is then used by the kernel to determine where to display the output, or even whether to display the output at all.  If the kernel had been able to use \texttt{printf}, such a system could have never been implemented.
 
 \subsection{Community Norms}
 \label{subsec:kernel_community}
 
+For the Linux kernel, changes are made via patches submitted via email\footnote{Patches are consolidated by maintainers into git trees, whereupon they remain in the git management system and transferred between trees using pull requests, however almost all patches begin via email.}.  Each of these patches are a single change to the kernel (e.g. fixing a bug, adding a small feature, etc).  If multiple changes are necessary to implement a larger change or feature, a \textit{patch set} is submitted, composed of multiple isolated patches.  While these patches are needed together to implement the feature, to prevent bugs and allow for partial inclusion of a patch set (if, for example, a patch towards the end of the set is determined to be unnecessary), each patch on its own cannot break the kernel's compilation.
+
+Because all kernel development is done in the open on email lists, and because anyone is able to contribute without qualifications or checks (the only judge of your skill and ability to contribute is the code which you submit), it is important that members of the community treat each other with respect so new members aren't alienated.  However, due to the importance of keeping the kernel's code base high quality and secure, it is essential that this need for respect does not inadvertently conflict with the need for quality contributions.  When the kernel's Code of Conduct\footnotemark was published, many feared that this would degrade the quality of the kernel's code by moving the development space from a meritocracy based on programming skill alone to a ``post-meritocracy" which would allow code from relatively unskilled contributors of a less-represented background to be included in the kernel.  For now, at least, it appears that these fears have been unfounded.
+
+One pivotal point in discussions surrounding the conduct expected by members of the Linux development community are the famed ``rants" of Linus Torvalds\footnote{\url{https://www.reddit.com/r/linusrants/}}, the aforementioned founder and lead of the Linux kernel development.  Previously a staple of kernel development, Linus was known the be extremely harsh when dealing with what were, from his perspective, stupid code submissions from people who should know better.  For example, when learning that a change was included which would decrease performance but fix a bug caused by a developer who was reading kernel messages one byte at a time, Linus asked (regarding that developer) ``How did they noty die as babies, considering that they were likely too stupid to find a tit to suck on?"\footnote{\url{https://lkml.org/lkml/2012/7/6/495}}.  As a result of recent backlash against these ``rants", Linus and others updated the kernel's Code of Conduct to the current version.\footnote{\url{https://lkml.org/lkml/2018/9/16/167}}\footnote{\url{https://www.kernel.org/doc/html/latest/process/code-of-conduct.html}}\addtocounter{footnote}{-1}\addtocounter{Hfootnote}{-1}
+
+\subsection{Level of Activity}
+\label{subsec:kernel_activity}
+
+As previously stated, the kernel's development consists of individual patches submitted via email to public mailing lists and maintainers.  For small, obviously correct patches (style changes, etc.), the maintainer can just merge that patch into their tree.  For larger patches which affect more of the kernel, there is usually some discussion on the mailing lists before that is able to happen.  After all, Linux is a community-based project and it is important that the community can comment on code which will be included.  Following the initial inclusion of the patch is a complicated system by which higher-up maintainers bring in patches from lower maintainers and patches will propagate upwards until they are merged into Linus' master branch.  There is a mainline release from Linus' branch every 2-3 months, and bugfixes to improve the kernel's stability are released weekly.\footnote{\url{https://www.kernel.org/category/releases.html}}
+
+	In terms of contribution volume, however, things are much more rapid.  As of 2017, there were on average 8.5 patches submitted every hour.\footnote{\url{https://www.linuxfoundation.org/publications/2017/10/2017-state-of-linux-kernel-development/}}  This was an increase from the previous year, and the number has only risen since then.  Due to this massive number of contributions, there are hundreds of maintainers (covered in \ref{subsec:kernel_contributors}), and many tools exist to speed up kernel development.  For example, many maintainers have numerous scripts and filters on their email inboxes to automate much of the work for them, and Intel's Open Source Technology Center tests many kernel development git trees to check for any bugs caused by patches which they brought in\footnote{\url{https://01.org/lkp/documentation/0-day-test-service}}.  While these do not remove all of the workload from the maintainers, they greatly decrease it.
+
+\subsection{Number of Contributors}
+\label{subsec:kernel_contributors}
+
+In 2017, there were 1,681 developers who have contributed to the Linux kernel.\addtocounter{footnote}{-2}\addtocounter{Hfootnote}{-2}\footnotemark  Of these contributions, between 91.8\% and 95.9\% of them came from corporate contributors, the largest of which was Intel.  Additionally, there were ~200 new developers.  Since the kernel's inception, there have been over 15,500 contributors.
+
+\subsection{Product Size}
+\label{subsec:kernel_codebase}
+
+The Linux kernel is massive.  As of commit \texttt{4ae004a9bca8bef118c2b4e76ee31c7df4514f18} (June 20, 2019 5:19pm EST), Linus' tree has 18,189,965 lines of code across slightly over 53,000 files.  Despite this, the kernel is very well documented, with the documentation directory alone containing 6,599 files.  These cover the majority of the kernel, and the core code is filled with comments explaining what every function does.  In addition, the kernel is designed to be modular, so even though the overall code base is massive, most changes will only have to affect one or two files.
+
+In addition to being well documented, kernel code is also well written.  The kernel has a very strict formatting policy and the large number of eyes on the code ensures the quality of all contributions.  For these reasons, even if some function isn't covered by documentation, looking at the code for that function will easily show what it does.
+
+\subsection{Issue Tracker}
+\label{subsec:kernel_issue_tracker}
+
+As stated previously, kernel development is tracked through kernel mailing lists.  Depending on the specific subsystem to which the bug relates, information regarding the issue is shared over either the mailing lists or \url{https://bugzilla.kernel.org}.\footnote{\url{https://www.kernel.org/doc/html/latest/admin-guide/reporting-bugs.html}}  There is one exception to this: security issues.  When there is a security vulnerability, it is requested that instead of reporting to a public mailing list, details be sent to \href{mailto:security@kernel.org}{security@kernel.org}, a private list.  This is to prevent bugs from being exploited after being disclosed to the public.
+
+\subsection{New Contributors}
+\label{subsec:kernel_newbies}
+
+Although the Linux kernel can be intimidating, it is actually very friendly to newcomers.  Since many people don't feel confident patching core kernel logic when they first begin, most ``first patches" consist mainly of style changes.  These are largely uncontroversial and simple to write.  Therefore, almost all of the difficulty in the initial patch comes from the patching process itself -- as stated above, patches are submitted at an incredible rate, so there are some strict guidelines in place for how to submit.  Fortunately, this process too is very well documented\footnote{\url{https://www.kernel.org/doc/html/latest/process/submitting-patches.html}}, and even if one makes a mistake most developers are very sympathetic and will help to push the new contributor in the right direction.
+
+For example, I recently submitted a simple patch to the Linux kernel\footnote{\url{https://kernel.googlesource.com/pub/scm/linux/kernel/git/gregkh/staging/+/4c1d2fc7d56cf87a0d399be69e08d5aef73802eb}} (it fixed a style error some driver).  In doing so, I failed twice to email the correct people: first, I emailed only Greg Kroah-Hartman (the maintainer of the drivers tree), then I emailed the wrong mailing list.  Both times, the response I received was succinct, polite, and helpful.  The first email was simply an automated message stating that Greg did not see emails addressed only to him, as kernel development is an open procedure, so I should send it to the mailing list related to the patch I was submitting.  The second email was from Greg himself, not a bot on his behalf, telling me that I had mailed the wrong list and telling me how to find the correct lists.  The third email was a confirmation that my patch had been accepted.\\
+
+While the aforementioned in-kernel documentation is very helpful, it is intended more as a reminder/checklist for contributors who are already familiar with the submission procedure.  Luckily, there are communities devoted to helping new developers learn, from scratch, how to contribute to the kernel.  One such group is \url{https://kernelnewbies.org/}, which hosts detailed tutorials on how to report bugs, submit changes, and much more.  It recommends, for example, submitting a patch to a driver in \texttt{drivers/staging}, as there are usually many style errors which will easily be accepted.  I personally found the site invaluable as I prepared to submit my patch.
+
+One of the biggest barriers of entry for new contributors is intimidation by the size, prestige, and ``rants" (as discussed in \ref{subsec:kernel_community}) of the kernel.  Once a simple patch is submitted, much of that fear goes away, as it becomes clear that kernel development is not something to be feared.  This paves the path to submitting more intensive patches which change more and ensures that anyone can feel comfortable submitting to the Linux kernel.
+
 \subsection{User Base}
 \label{subsec:kernel_users}
+
+A common joke among desktop Linux users is that ``this is the year of the Linux desktop", meaning that this year, Linux will gain traction and be recognized by the general public as a popular operating system for all users.  The joke, of course, is that people have been saying this for over a decade, so the statement has become self-satirical.  Regardless, the Linux kernel is at the core of billions of devices.
+
+The largest ``personal" operating system (i.e. used for everyday personal use) is Android.  As of 2017, Android ran on over 2 billion phones.\footnote{\url{https://www.cnet.com/news/google-boasts-2-billion-active-android-devices/}}.  Additionally, Linux is the core of many aptly named ``Linux distributions", which provide a method for desktop users to use Linux as their primary operating system.  Currently, there are nearly 600 active Linux distributions.\footnote{\url{https://lwn.net/Distributions/}}  One popular Linux distribution, ChromeOS\footnote{\url{https://www.chromium.org/chromium-os}}, is developed by Google and is provided via Chromebooks, Google-built netbooks which come preinstalled with ChromeOS.  In 2013, Google sold 1.76 million Chromebooks in the U.S. alone\footnote{\url{https://www.latimes.com/business/technology/la-fi-tn-google-chromebook-sales-jump-apple-microsoft-struggle-20131230-story.html}}, and due to providing a simple, cheap system which integrated perfectly with the Google education suite, Chromebooks have taken off in the education space.  In 2016, for example, Chromebooks made up 49\% of the education market\footnote{\url{https://www.apnews.com/41817339703440a49d8916c0f67d28a6}}, and their market share has only increased since.
+
+Outside of ``user" applications, Linux is used in multiple contexts.  As of June 2016, for example, Linux was the core of 96.45\% of web servers.\footnote{\url{https://web.archive.org/web/20160612024305/http://www.w3cook.com/os/summary}}  Professionally, movie studios have been largely using Linux for decades\footnote{\url{https://www.linuxjournal.com/article/5472}}, and multiple governments have begun using Linux as an operating system as its open source nature lends well to transparency\footnote{\url{http://news.bbc.co.uk/2/hi/business/3445805.stm}}\footnote{\url{https://web.archive.org/web/20090918002910/http://www.mdronline.com/watch/watch_Issue.asp?Volname=Issue\%2B\%23110308&on=1}}\footnote{\url{https://www.seattlepi.com/business/article/Some-countries-are-choosing-Linux-systems-over-1073338.php}}.  Additionally, many embedded devices use the Linux kernel to power their applications.  Finally, as of September 2017, 100\% of the top 500 supercomputers run on Linux.\footnote{\url{https://www.zdnet.com/article/linux-totally-dominates-supercomputers/}}
 
 \end{document}
