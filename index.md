@@ -17,3 +17,4 @@ I am a Computer Science student at [RPI](https://rpi.edu/).  I'm currently worki
 [Lab 6](labs/lab-06/report.md)
 [Lab 7](labs/lab-07/report.md)
 [Lab 8](labs/lab-08/report.md)
+[Lab 9](labs/lab-09/report.md)
